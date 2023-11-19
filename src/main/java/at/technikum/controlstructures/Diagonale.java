@@ -9,12 +9,11 @@ public class Diagonale {
             do {
                 System.out.print(": ");
                 sideLen = scanner.nextInt();
-                if (sideLen % 2 != 0)
+                // if (sideLen < 0) sideLen *= -1;
+                if (sideLen % 2 != 0 && sideLen >= 1)
                     for (int row = 0; row < sideLen; row++) {
                         for (int col = 0; col < sideLen; col++)
-                            if (row == col)
-                                System.out.print("*");
-                             else if (row + col + 1 == sideLen)
+                            if (row == col || row + col + 1 == sideLen)
                                 System.out.print("*");
                              else
                                 System.out.print("-");
