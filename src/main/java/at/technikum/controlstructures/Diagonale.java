@@ -15,7 +15,7 @@ public class Diagonale {
                         for (int col = 0; col < sideLen; col++)
                             if (row == col || row + col + 1 == sideLen)
                                 System.out.print("*");
-                             else
+                            else
                                 System.out.print("-");
                         System.out.println();
                     }
