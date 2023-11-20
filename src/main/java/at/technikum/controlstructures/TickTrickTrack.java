@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class TickTrickTrack {
     public static void main(String[] args) {
         try(Scanner sc = new Scanner(System.in)) {
-            int countEquals = 0;
-            int countInput = 0;
-            int numBefore = 0;
-            int numAfter = 0;
+            int countEquals = 0, countInput = 0, numBefore = 0, numAfter = 0;
             System.out.print("Eingabe: ");
             numBefore = sc.nextInt();
             countInput++;
