@@ -20,30 +20,34 @@ public class Walker {
                 if (input == 5)
                     break;
                 if (input == 2)  {
-                    int xRowNew = moveDown(xRow);
-                    if (xRowNew != xRow) {
-                        xRow = xRowNew;
+                    if (xRow == 10) {
+                        System.out.println("Aktion unmoeglich!");
+                    } else {
+                        xRow++;
                         countValidMoves++;
                     }
                 }
                 else if (input == 8)  {
-                    int xRowNew = moveUp(xRow);
-                    if (xRowNew != xRow) {
-                        xRow = xRowNew;
+                    if (xRow == 1) {
+                        System.out.println("Aktion unmoeglich!");
+                    } else {
+                        xRow--;
                         countValidMoves++;
                     }
                 }
                 else if (input == 4) {
-                    int xColNew = moveLeft(xCol);
-                    if (xColNew != xCol) {
-                        xCol = xColNew;
+                    if (xCol == 1) {
+                        System.out.println("Aktion unmoeglich!");
+                    } else {
+                        xCol--;
                         countValidMoves++;
                     }
                 }
                 else {
-                    int xColNew = moveRight(xCol);
-                    if (xColNew != xCol) {
-                        xCol = xColNew;
+                    if (xCol == 10) {
+                        System.out.println("Aktion unmoeglich!");
+                    } else {
+                        xCol++;
                         countValidMoves++;
                     }
                 }
@@ -54,40 +58,6 @@ public class Walker {
             System.out.println("Invalid Input:" + e);
         }
     }
-
-    private static int moveRight(int xCol) {
-        if (xCol == 10) {
-            System.out.println("Aktion unmoeglich!");
-            return xCol;
-        }
-        xCol++;
-        return xCol;
-    }
-    private static int moveLeft(int xCol) {
-        if (xCol == 1) {
-            System.out.println("Aktion unmoeglich!");
-            return xCol;
-        }
-        xCol--;
-        return xCol;
-    }
-    private static int moveUp(int xRow) {
-        if (xRow == 1) {
-            System.out.println("Aktion unmoeglich!");
-            return xRow;
-        }
-        xRow--;
-        return xRow;
-    }
-    private static int moveDown(int xRow) {
-        if (xRow == 10) {
-            System.out.println("Aktion unmoeglich!");
-            return xRow;
-        }
-        xRow++;
-        return xRow;
-    }
-
     private static void printMap(int xRow, int xCol) {
         for (int row = 1; row <= 10; row++) {
             for (int col = 1; col <= 10 ;col++) {
