@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BMI {
     public static void main(String[] args) {
         try(Scanner scanner = new Scanner(System.in)) {
-            double weight = 0, height = 0 , bmi;
+            double weight = 0., height = 0. , bmi;
             System.out.print("weight [kg]: ");
             weight = scanner.nextDouble();
             System.out.print("height [m]: ");
@@ -46,26 +46,16 @@ public class BMI {
         return categoryNum;
     }
     public static void bmiMessage(int bmiCategory) {
-        if (bmiCategory == -1) {
-            System.out.print("invalid.");
-            return;
-        }
-        if (bmiCategory == 10) {
-            System.out.print("Very severely underweight");
-        } else if (bmiCategory == 11) {
-            System.out.print("Severely underweight");
-        } else if (bmiCategory == 12) {
-            System.out.print("Underweight");
-        } else if (bmiCategory == 20) {
-            System.out.print("Normal");
-        } else if (bmiCategory == 30) {
-            System.out.print("Overweight");
-        } else if (bmiCategory == 40) {
-            System.out.print("Moderately obese");
-        } else if (bmiCategory == 41) {
-            System.out.print("Severely obese");
-        } else if (bmiCategory == 42) {
-            System.out.print("Very Severely obese");
+        switch (bmiCategory) {
+            case 10 -> System.out.print("Very severely underweight");
+            case 11 -> System.out.print("Severely underweight");
+            case 12 -> System.out.print("Underweight");
+            case 20 -> System.out.print("Normal");
+            case 30 -> System.out.print("Overweight");
+            case 40 -> System.out.print("Moderately obese");
+            case 41 -> System.out.print("Severely obese");
+            case 42 -> System.out.print("Very Severely obese");
+            default -> System.out.print("invalid.");
         }
     }
 }
