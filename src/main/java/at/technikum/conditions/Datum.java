@@ -1,10 +1,5 @@
-package at.technikum.controlstructures;
+package at.technikum.conditions;
 
-import com.sun.java.accessibility.util.Translator;
-
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Datum {

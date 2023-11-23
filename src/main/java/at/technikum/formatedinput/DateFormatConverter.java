@@ -29,8 +29,7 @@ public class DateFormatConverter {
                 int year = date / 10000;
                 int month = date % 10000;
                 month = month / 100;
-                int day = date % 10000;
-                day = day / 100;
+                int day = date % 100;
                 System.out.printf("%d.%d.%d", day, month, year);
             }
             else

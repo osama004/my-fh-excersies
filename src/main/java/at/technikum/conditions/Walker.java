@@ -1,4 +1,4 @@
-package at.technikum.controlstructures;
+package at.technikum.conditions;
 import java.util.Scanner;
 
 public class Walker {
@@ -19,38 +19,34 @@ public class Walker {
                 }
                 if (input == 5)
                     break;
-                if (input == 2)  {
+                if (input == 2)
                     if (xRow == 10) {
                         System.out.println("Aktion unmoeglich!");
                     } else {
                         xRow++;
                         countValidMoves++;
                     }
-                }
-                else if (input == 8)  {
+                else if (input == 8)
                     if (xRow == 1) {
                         System.out.println("Aktion unmoeglich!");
                     } else {
                         xRow--;
                         countValidMoves++;
                     }
-                }
-                else if (input == 4) {
+                else if (input == 4)
                     if (xCol == 1) {
                         System.out.println("Aktion unmoeglich!");
                     } else {
                         xCol--;
                         countValidMoves++;
                     }
-                }
-                else {
+                else
                     if (xCol == 10) {
                         System.out.println("Aktion unmoeglich!");
                     } else {
                         xCol++;
                         countValidMoves++;
                     }
-                }
                 printMap(xRow,xCol);
             }
             System.out.printf("Schritte insgesamt: %d\n", countValidMoves);

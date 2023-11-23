@@ -1,15 +1,13 @@
-package at.technikum.controlstructures;
+package at.technikum.conditions;
 
 import java.util.Scanner;
 
 public class TickTrickTrack {
     public static void main(String[] args) {
         try(Scanner sc = new Scanner(System.in)) {
-            int countEquals = 0, countInput = 0, numBefore = 0, numAfter = 0;
+            int countEquals = 1, countInput = 1, numBefore = 0, numAfter = 0;
             System.out.print("Eingabe: ");
             numBefore = sc.nextInt();
-            countInput++;
-            countEquals++;
             while (countEquals < 3) {
                 System.out.print("Eingabe: ");
                 numAfter = sc.nextInt();

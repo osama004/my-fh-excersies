@@ -1,4 +1,4 @@
-package at.technikum.controlstructures;
+package at.technikum.conditions;
 import java.util.Scanner;
 public class Walker_hard {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package at.technikum.controlstructures;
+package at.technikum.functions;
 
 import java.util.Scanner;
 

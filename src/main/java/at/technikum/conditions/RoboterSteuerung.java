@@ -1,4 +1,4 @@
-package at.technikum.controlstructures;
+package at.technikum.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
