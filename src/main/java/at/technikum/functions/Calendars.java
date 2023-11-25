@@ -30,7 +30,9 @@ public class Calendars {
     public static void main(String[] args) {
 
         sc = new Scanner(System.in);
-        int day = 1, month = 1, year = 1970;
+        int day = 23, month = 11, year = 2023;
+        // int day = 1, month = 1, year = 1970;
+        // int day = 8, month = 1, year = 1970;
         while (true) {
 
             int op;
@@ -113,7 +115,7 @@ public class Calendars {
 
 
     public static boolean checkDate(int year) {
-        return year < 1582 || year > 2199;
+        return year >= 1582 && year <= 2199;
     }
 
     public static boolean checkDate(int year, int month) {
@@ -130,7 +132,7 @@ public class Calendars {
 
     public static int daysInMonth(int year, int month) {
         int daysInMonth = -1;
-        if (checkDate(year, month)) return -1;
+        if (!checkDate(year, month)) return -1;
         if (isLeap(year) && month == 2) return 29;
 
         if (month == 1) return 31;
@@ -159,16 +161,17 @@ public class Calendars {
     }
 
     public static int ymd2w(int year, int month, int day) {
+        // not working
         if (!checkDate(year, month, day)) return -1;
         if (month < 3) {
-            month += 10;
+            month += 12;
             year--;
         }
         int yy = year % 100;
         int century = year / 100;
-        int weekday = (int) (day + (2.6 * month - 0.2) + yy + (yy / 4) + (century / 4) - (2 * century));
+        int weekday = (day + 13 * (month + 1) / 5 + yy + (yy / 4) + (century / 4) - (2 * century)) % 7;
         if (weekday < 0) weekday += 7;
-        return weekday % 7;
+        return weekday - 1;
     }
 
     public static int dayNumber(int year, int month, int day) {
@@ -176,33 +179,31 @@ public class Calendars {
         int dayNumber = 0;
         for (int i = month - 1; i > 0; i--)
             dayNumber += daysInMonth(year, i);
-        dayNumber -= daysInMonth(year, month);
-        if (dayNumber <= 0) dayNumber *= -1;
+        dayNumber += day;
         return dayNumber;
     }
 
     static int weekNumber(int year, int month, int day) {
         if (!checkDate(year, month, day)) return -1;
-        int jan4thDayOfWeek = ymd2w(year, month, day);
-        int targetDayOfWeek = ymd2w(year, month, day);
-
-        int dayOffset = (targetDayOfWeek - jan4thDayOfWeek + 7) % 7;
-
-        int weekNumber = (dayOffset + 4) / 7 + 1;
+        int jan4thDayOfWeek = dayNumber(year, 1, 4);
+        int targetDayOfWeek = dayNumber(year, month, day);
+        int weekNumber = 0;
+        weekNumber = (targetDayOfWeek - ymd2w(year, month, day) + 10) / 7;
+        /*
         System.out.printf("""
                 jan4thDayOfWeek: %d
                 targetDayOfWeek: %d
-                dayOffset: %d
                 weekNumber: %d
-                                
-                """, jan4thDayOfWeek, targetDayOfWeek, dayOffset, weekNumber);
+                """, jan4thDayOfWeek, targetDayOfWeek, weekNumber);
+         */
+
 
         return weekNumber;
     }
 
     /* Print methods !! */
     public static void printDayName(int day) {
-        if (day < 0 || day > 6)  {
+        if (day < 0 || day > 6) {
             System.out.printf("Invalid day(%d)\n", day);
             return;
         }
@@ -215,7 +216,7 @@ public class Calendars {
             System.out.printf("Invalid Month(%d)\n", month);
             return;
         }
-        String[] months = { "PLACEHOLDER",
+        String[] months = {"PLACEHOLDER",
                 "January", "February", "March", "April",
                 "May", "June", "July", "August",
                 "September", "October", "November", "December"
@@ -234,12 +235,12 @@ public class Calendars {
             System.out.print("nd");
         else if (n == 3 || n == 23)
             System.out.print("rd");
-         else
+        else
             System.out.print("th");
     }
 
     public static void printDate(int year, int month, int day) {
-        printDayName(day);
+        printDayName(ymd2w(year, month, day));
         System.out.print(", ");
         printMonthName(month);
         System.out.printf(" %d", day);
@@ -257,35 +258,41 @@ public class Calendars {
         }
         printMonthName(month);
         System.out.printf("""
-                has %d days
-                it is day %d of %d
-                it is in week %d
-                """ , daysInMonth(year, month) , dayNumber(year, month, day),
-                year, weekNumber( year,  month,  day));
+                         has %d days
+                        it is day %d of %d
+                        it is in week %d
+                        """, daysInMonth(year, month), dayNumber(year, month, day),
+                year, weekNumber(year, month, day));
     }
 
     public static void printCalendar(int year, int month, int day, boolean highlight) {
         int indexDay = 1;
-        if (!highlight) {
-            printMonthName(month);
-            System.out.printf(" %d\n Mon Tue Wed Thu Fri Sat Sun\n", year);
-            int weekday = ymd2w(year, month, day);
-            int daysInMonth = daysInMonth(year, month);
-            // first Row
-            for (int i = 0; i < weekday; i++) {
-                System.out.print("\t");
-               // System.out.printf("%4s"," ");
-            }
-
-            for (int i = 0; i < 7 - weekday; i++) {
-                System.out.printf("%2d\t", indexDay);
+        int daysInMonth = daysInMonth(year, month);
+        int weekday = ymd2w(year, month, day);
+        printMonthName(month);
+        System.out.printf(" %d\nMon Tue Wed Thu Fri Sat Sun\n", year);
+        for (int i = 0; i < weekday; i++)  // first Row
+            System.out.print("\t");
+        for (int i = 0; i < 7 - weekday; i++) { // first Row
+            if (highlight && indexDay == day)
+                System.out.printf("<%d> ", indexDay);
+            else
+                System.out.printf("%2d%2s", indexDay, " ");
+            indexDay++;
+        }
+        System.out.println();
+        while (indexDay <= daysInMonth) {
+            for (int i = 1; i <= 7; i++) {
+                if (highlight && indexDay == day)
+                    if (day < 10)
+                        System.out.printf("<%d> ", indexDay);
+                    else
+                        System.out.printf("\b<%d> ", indexDay);
+                else
+                    System.out.printf("%2d%2s", indexDay, " ");
                 indexDay++;
             }
-
-
-        } else {
-
+            System.out.println();
         }
     }
-
 }
