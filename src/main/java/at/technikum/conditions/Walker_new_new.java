@@ -2,6 +2,7 @@ package at.technikum.conditions;
 import java.util.Scanner;
 
 public class Walker_new_new {
+
     int countValidMoves = 0;
     int xRow;
     int xCol;

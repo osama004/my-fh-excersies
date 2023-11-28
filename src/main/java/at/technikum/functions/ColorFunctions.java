@@ -15,9 +15,8 @@ public class ColorFunctions {
         System.out.println("Exiting ColorFunctions!");
     }
 
-    public static int read_channel() {
+    public static int read_channel(Scanner consoleInput) {
         int num = -1;
-        Scanner consoleInput = new Scanner(System.in);
         while (num < 0 || num > 255) {
             System.out.print(": ");
             num = consoleInput.nextInt();
@@ -34,11 +33,11 @@ public class ColorFunctions {
     public static int read_rgb() {
         int red = -1, green = -1, blue = -1;
         System.out.print("red");
-        red = read_channel();
+        red = read_channel(sc);
         System.out.print("green");
-        green = read_channel();
+        green = read_channel(sc);
         System.out.print("blue");
-        blue = read_channel();
+        blue = read_channel(sc);
         return encode(red, green, blue);
     }
 
@@ -137,7 +136,7 @@ public class ColorFunctions {
         sc = new Scanner(System.in);
         welcome();
         good_bye();
-        System.out.printf("%d\n", read_channel());
+        System.out.printf("%d\n", read_channel(sc));
         int a, b, c;
         a = 255;
         b = 200;
@@ -145,23 +144,15 @@ public class ColorFunctions {
         System.out.printf("%d\n", encode(a, b, c));
         System.out.printf("%d\n", read_rgb());
         System.out.printf("%d\n", red(124030200));
-
         System.out.printf("%d\n", green(124030200));
-
         System.out.printf("%d\n", blue(124030200));
-
         print_rgb(a);
         int cmy = rgb_2_cmy(124030200);
         System.out.printf("%d\n", cmy);
-
         System.out.printf("%d\n", cyan(cmy));
-
         System.out.printf("%d\n", magenta(cmy));
-
         System.out.printf("%d\n", yellow(cmy));
-
         print_cmy(cmy);
-
         convert();
         sc.close();
     }
