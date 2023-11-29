@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ArrayEvenStatistics {
     public static void main(String[] args) {
-        int[] nums = new int[1024];
+        int[] numbs = new int[1024];
 
         try(Scanner inputConsole = new Scanner(System.in)) {
             int num = 0, index = -1;
@@ -21,13 +21,13 @@ public class ArrayEvenStatistics {
                     }
                 }
                 index++;
-                nums[index] = num;
+                numbs[index] = num;
             }
             if (index == -1) {
                 System.out.println("no values entered.");
                 return;
             }
-            printEvenNumbsInfos(nums, index + 1);
+            printEvenNumbsInfos(numbs, index + 1);
         } catch (Throwable e) {
             System.out.println("Invalid Input:" + e);
         }
@@ -47,6 +47,7 @@ public class ArrayEvenStatistics {
         for (int i = 0; i < size; i++)
             if (numbs[i] % 2 == 0)
                 output.append(String.format(" %d", i));
+
         return output.toString();
     }
 
@@ -87,7 +88,8 @@ public class ArrayEvenStatistics {
         }
         return output.toString();
     }
-    */
+
+     */
 
     private static void printEvenNumbsInfos(int [] numbs, int size) {
         double sumEvenNumbs = 0;
@@ -96,32 +98,33 @@ public class ArrayEvenStatistics {
         int[] indexMaxValuePostions = new int[size];
         int maxValueIndex = -1;
         System.out.printf("%9s count: %d\n"," ",countEventNumbs);
-        if (countEventNumbs != 0) {
-            System.out.print("index positions: [");
-            for (int i = 0; i < size; i++) {
-                int num = numbs[i];
-                if (num % 2 == 0) {
-                    sumEvenNumbs += num;
-                    if (num > max) max = num;
-                    System.out.printf(" %d", i);
-                }
+        if (countEventNumbs == 0) return;
+        System.out.print("index positions: [");
+        for (int i = 0; i < size; i++) {
+            int num = numbs[i];
+            if (num % 2 == 0) {
+                sumEvenNumbs += num;
+                if (num > max) max = num;
+                System.out.printf(" %d", i);
             }
-            for (int i = 0; i < size; i++) {
-                int num = numbs[i];
-                if (num == max) {
-                    maxValueIndex++;
-                    indexMaxValuePostions[maxValueIndex] = i;
-                }
-            }
-            System.out.printf("""
-                    ]
-                    %11s sum: %.0f
-                    %10s mean: %.2f
-                    %11s max: %d [""", " ", sumEvenNumbs," " ,sumEvenNumbs / countEventNumbs," " ,max);
-            //System.out.printf(" %d", indexMaxValuePostions[0]);
-            for (int i = 0; i < maxValueIndex + 1; i++)
-                System.out.printf(" %d", indexMaxValuePostions[i]);
-            System.out.println("]");
         }
+        for (int i = 0; i < size; i++) {
+            int num = numbs[i];
+            if (num == max) {
+                maxValueIndex++;
+                indexMaxValuePostions[maxValueIndex] = i;
+            }
+        }
+        System.out.printf("""
+                ]
+                %11s sum: %.0f
+                %10s mean: %.2f
+                %11s max: %d [""", " ", sumEvenNumbs," " ,sumEvenNumbs / countEventNumbs," " ,max);
+        //System.out.printf(" %d", indexMaxValuePostions[0]);
+        for (int i = 0; i < maxValueIndex + 1; i++)
+            System.out.printf(" %d", indexMaxValuePostions[i]);
+        System.out.println("]");
+
     }
+
 }
