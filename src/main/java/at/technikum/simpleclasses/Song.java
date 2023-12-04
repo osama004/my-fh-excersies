@@ -1,7 +1,9 @@
 package at.technikum.simpleclasses;
 
 public class Song {
-    private String title,genre;
+    private String title;
+
+    private String genre;
 
     private Artist artist;
     private int length;
@@ -10,6 +12,12 @@ public class Song {
         setArtist(artist);
         setGenre(genre);
         setLength(length);
+    }
+
+    public Song(String title, String genre, Artist artist) {
+        this.title = title;
+        this.genre = genre;
+        this.artist = artist;
     }
 
     public String getTitle() {
@@ -51,6 +59,7 @@ public class Song {
         }
         this.length = length;
     }
+
 
     @Override
     public String toString() {

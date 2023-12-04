@@ -6,20 +6,20 @@ public class Playlist {
     private String title;
 
     private Artist artist;
-    private int songsCount;
+    private int songsCount = 0;
     private Song[] songs;
 
     public Playlist(String title, int maxNumberOfSongs) {
         setTitle(title);
         setArtist(new Artist("dummyFirst",  25));
         this.songs = new Song[maxNumberOfSongs];
-        this.songsCount = 0;
+        // this.songsCount = 0;
     }
 
-    public Playlist(String title, Artist artist, int maxNumberOfSongs) {
-        this.title = title;
+    public Playlist(String newTitle, Artist artist, int maxNumberOfSongs) {
+        this.title = newTitle;
         this.artist = artist;
-        this.songsCount = 0;
+        // this.songsCount = 0;
         this.songs = new Song[maxNumberOfSongs];
     }
 
@@ -64,6 +64,10 @@ public class Playlist {
     }
 
     public void setTitle(String title) {
+        if (title == null) {
+            System.out.println("Invalid title Null");
+            return;
+        }
         this.title = title;
     }
 
@@ -88,7 +92,7 @@ public class Playlist {
         Song[] uniqueSongs = new Song[songsCount];
             for (int i = 0; i < songsCount; i++) {
                 Song song = songs[i];
-                if (!containsArtist(uniqueSongs, song)) {
+                if (!containsArtistName(uniqueSongs, song)) {
                     uniqueSongs[i] = song;
                     uniqueCount++;
                 }
@@ -96,11 +100,11 @@ public class Playlist {
         return uniqueCount;
     }
 
-    public boolean containsArtist(Song[] songs, Song song) {
+    public boolean containsArtistName(Song[] songs, Song song) {
         for (int i = 0; i < songsCount; i++) {
             Song elem = songs[i];
             if (elem != null)
-                if (elem.getArtist().getName().equals(song.getArtist().getName()))
+                if (elem.getArtist().getName().equalsIgnoreCase(song.getArtist().getName()))
                     return true;
         }
         return false;

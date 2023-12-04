@@ -3,6 +3,17 @@ package at.technikum.simpleclasses;
 public class MusicPlayer {
     public static void main(String[] args) {
         // artist1 artist2 artist2 artist1 artist1 artist3 artist2
+        Artist artist1 = new Artist("Raul gonzo", 20);
+        Song track1 = new Song("Time to say goodbye", artist1, "Pop", 400);
+        // System.out.println(track1.toString());
+        // System.out.println(track1);
+        Playlist playlist1 = new Playlist("My favorites", 8);
+        System.out.println(playlist1.getSongsCount());
+
+    }
+    /*
+    public static void main(String[] args) {
+        // artist1 artist2 artist2 artist1 artist1 artist3 artist2
         Playlist playlist1 = new Playlist("My favorites", 8);
         Artist artist1 = new Artist("Raul gonzo", 20);
         Artist artist2 = new Artist("Mike Kick", 19);
@@ -29,4 +40,6 @@ public class MusicPlayer {
         System.out.println(playlist1);
         System.out.printf("Total Runtime in Seconds: %d", playlist1.getTotalRuntime()); // 1000
     }
+
+     */
 }
