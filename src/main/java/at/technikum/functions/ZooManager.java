@@ -9,14 +9,14 @@ public class ZooManager {
     static void printMenu() {
         System.out.print("-------------------------\n");
         System.out.print("1: Gewicht erfassen\n");
-        System.out.print("2: Groesze erfassen\n");
+        System.out.print("2: Groesse erfassen\n");
         System.out.print("3: Ausgeben\n");
         System.out.print("4: Angaben pruefen\n");
         System.out.print("5: Loeschen\n");
         System.out.print("6: Durchschn. Gewicht\n");
-        System.out.print("7: Durchschn. Groesze\n");
-        System.out.print("8: Groesze des Schwersten\n");
-        System.out.print("9: Gewicht des Groesten\n");
+        System.out.print("7: Durchschn. Groesse\n");
+        System.out.print("8: Groesste des Schwersten\n");
+        System.out.print("9: Gewicht des Groessten\n");
         System.out.print("0: Beenden\n");
         System.out.print("-------------------------\n");
     }
@@ -80,10 +80,10 @@ public class ZooManager {
                     System.out.printf("Durchschn. Groesse: %.2f\n", avg(length));
                     break;
                 case 8:
-                    System.out.printf("Groesse des Schwersten: %.2f\n", b_of_max_a(weight, length));
+                    System.out.printf("Groesste des Schwersten: %.2f\n", b_of_max_a(weight, length));
                     break;
                 case 9:
-                    System.out.printf("Gewicht des Groesten: %.2f\n", b_of_max_a(length, weight));
+                    System.out.printf("Gewicht des Groessten: %.2f\n", b_of_max_a(length, weight));
                     break;
             }
         }

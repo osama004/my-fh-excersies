@@ -33,13 +33,14 @@ public class PartyHandshake {
     public static String[] handShakes(String[] names) {
         int n =  names.length;
         String[] handshakes = new String[n * (n - 1) / 2];
-        for (int i = 0, indexHandshakes = 0; i < names.length; i++)
-            for (int j = i + 1; j < names.length; j++, indexHandshakes++)
-                handshakes[indexHandshakes] = String.format("%s -> %s", names[i], names[j]);
+        for (int i = 0, hsIndex = 0; i < n - 1; i++)
+            for (int j = i + 1; j < n; j++)
+                handshakes[hsIndex++] = String.format("%s -> %s", names[i], names[j]);
         return handshakes;
     }
 
     public static void print(String[] handshakes) {
-        for (String handshake: handshakes) System.out.println(handshake);
+        for (String handshake: handshakes)
+            System.out.println(handshake);
     }
 }

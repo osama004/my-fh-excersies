@@ -1,4 +1,4 @@
-package at.technikum.simpleclasses;
+package at.technikum.simpleclasses.musicplayer;
 
 public class Artist {
     private String name;

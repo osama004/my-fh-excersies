@@ -7,7 +7,7 @@ public class Audio {
 
         try(Scanner consoleInput = new Scanner(System.in))  {
             int countValues = 0;
-            float value = -100;
+            float value = -100f;
             float[] values = new float[16];
             System.out.println("Max. 16 Wert eingeben, 0 beendet:");
             while (countValues < 16) { // start from 0 to 15

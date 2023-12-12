@@ -1,4 +1,4 @@
-package at.technikum.simpleclasses;
+package at.technikum.simpleclasses.musicplayer;
 
 import java.util.Arrays;
 
@@ -23,31 +23,68 @@ public class Playlist {
         this.songs = new Song[maxNumberOfSongs];
     }
 
-    public void addSong(Song song) {
+    public boolean addSong(Song song) {
         if (song == null) {
             System.out.println("Invalid song");
-            return;
+            return false;
         }
         if (songsCount + 1 > songs.length) { // songsCount == songs.length
             System.out.println("Your Playlist is full!!");
-            return;
+            return false;
         }
         songs[songsCount] = song;
         songsCount++;
+        return true;
     }
 
-    public void removeSong(Song song) {
+    public void addSongs(Song...songs) {
+        for (Song song: songs) addSong(song);
+    }
+
+    public boolean removeSong(Song song) {
         if (song == null) {
             System.out.println("Invalid Song");
-            return;
+            return false;
         }
         for(int i = 0; i < songsCount; i++) {
-            if (songs[i].getTitle().equals(song.getTitle())) {
+            if (songs[i].equals(song)) {
                 songsCount--;
                 for (; i < songsCount; i++)
                     songs[i] = songs[i + 1];
+                songs[songsCount] = null;
+                return true;
             }
         }
+        return false;
+    }
+
+    public boolean removeSongByTitle(String title) {
+        if (title == null) {
+            System.out.println("Invalid Song");
+            return false;
+        }
+        for(int i = 0; i < songsCount; i++) {
+            if (songs[i].getTitle().equalsIgnoreCase(title)) {
+                songsCount--;
+                for (; i < songsCount; i++)
+                    songs[i] = songs[i + 1];
+                songs[songsCount] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int removeAllSongsByTitle(String title) {
+        int removeCount = 0;
+        if (title == null) {
+            System.out.println("Invalid Song");
+            return removeCount;
+        }
+        for(int i = 0; i < songsCount; i++)
+            if (removeSongByTitle(title))
+                removeCount++;
+        return removeCount;
     }
 
     public int getTotalRuntime() {

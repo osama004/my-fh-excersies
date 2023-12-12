@@ -1,6 +1,7 @@
-package at.technikum.simpleclasses;
+package at.technikum.simpleclasses.musicplayer;
 
 public class MusicPlayer {
+    /*
     public static void main(String[] args) {
         // artist1 artist2 artist2 artist1 artist1 artist3 artist2
         Artist artist1 = new Artist("Raul gonzo", 20);
@@ -11,7 +12,7 @@ public class MusicPlayer {
         System.out.println(playlist1.getSongsCount());
 
     }
-    /*
+     */
     public static void main(String[] args) {
         // artist1 artist2 artist2 artist1 artist1 artist3 artist2
         Playlist playlist1 = new Playlist("My favorites", 8);
@@ -26,20 +27,13 @@ public class MusicPlayer {
         Song track6 = new Song("He got destroyed", artist3, "Pop", 200);
         Song track7 = new Song("love yourself", artist2, "Pop", 200);
         Song track8 = new Song("love yourself", artist2, "Pop", 200);
-        playlist1.addSong(track1);
-        playlist1.addSong(track2);
-        playlist1.addSong(track3);
-        playlist1.addSong(track4);
-        playlist1.addSong(track5);
-        playlist1.addSong(track6);
-        playlist1.addSong(track7);
-        playlist1.addSong(track8);
-        System.out.println(playlist1);
+        playlist1.addSongs(track1, track2, track3, track4, track5, track6, track7, track8);
+        System.out.printf("Before Removal:%s\n", playlist1);
         System.out.println(playlist1.getUniqueArtist());
-        playlist1.removeSong(track2);
+        // playlist1.removeSong(track2);
+        // playlist1.removeSongByTitle(track7.getTitle());
+        playlist1.removeAllSongsByTitle(track7.getTitle());
         System.out.println(playlist1);
         System.out.printf("Total Runtime in Seconds: %d", playlist1.getTotalRuntime()); // 1000
     }
-
-     */
 }
