@@ -1,5 +1,6 @@
 package at.technikum.simpleclasses.musicplayer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Playlist {
