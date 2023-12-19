@@ -12,12 +12,13 @@ public class TestMyLinkedList {
 
         numbers.print();
 
-        /*
+
         numbers.removeAt(1);
+        numbers.removeAt(3);
 
         numbers.print();
 
-         */
+
 
     }
 }

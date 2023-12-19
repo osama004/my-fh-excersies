@@ -1,7 +1,5 @@
 package at.technikum.simpleclasses.collection;
 
-import at.technikum.simpleclasses.collection.doublyLinked.NodeDoubly;
-
 public class LinkedList<E> implements List<E>{
 
     private Node<E> startNode;
@@ -9,6 +7,15 @@ public class LinkedList<E> implements List<E>{
     private Node<E> lastNode;
 
     private int size;
+
+    public LinkedList() {
+        this.size = 0;
+    }
+
+    public LinkedList(Node<E> startNode) {
+        this.startNode = startNode;
+        this.size = 1;
+    }
 
     @Override
     public void add(E element) {
@@ -38,18 +45,28 @@ public class LinkedList<E> implements List<E>{
         if (index >= size || index < 0) throw new IndexOutOfBoundsException();
         Node<E> linkedList = startNode;
         int i = 0;
-        while (i < index) {
-            linkedList = linkedList.nextNode;
-            i++;
-        }
-        while (i < size - 2) {
-            // node[i] = node[i + 1]
+        if (index != size - 1) {
+            while (i < index) {
+                linkedList = linkedList.nextNode;
+                i++;
+            }
+            while (i < size - 2) {
+                // node[i] = node[i + 1]
+                linkedList.value = linkedList.nextNode.value;
+                linkedList = linkedList.nextNode;
+                i++;
+            }
             linkedList.value = linkedList.nextNode.value;
-            linkedList = linkedList.nextNode;
-            i++;
+            linkedList.nextNode = null;
         }
-        linkedList.value = linkedList.nextNode.value;
-        linkedList.nextNode = null;
+        else {
+            while (i < index - 1) {
+                linkedList = linkedList.nextNode;
+                i++;
+            }
+            linkedList.nextNode = null;
+            lastNode = linkedList;
+        }
         size--;
     }
 
@@ -70,18 +87,9 @@ public class LinkedList<E> implements List<E>{
         }
         System.out.println();
     }
-
+    
     @Override
     public int getSize() {
         return size;
-    }
-
-    public LinkedList() {
-        this.size = 0;
-    }
-    
-    public LinkedList(Node<E> startNode) {
-        this.startNode = startNode;
-        this.size = 1;
     }
 }
