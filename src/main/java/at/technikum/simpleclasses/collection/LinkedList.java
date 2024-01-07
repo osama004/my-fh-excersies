@@ -43,29 +43,28 @@ public class LinkedList<E> implements List<E>{
     @Override
     public void removeAt(int index) {
         if (index >= size || index < 0) throw new IndexOutOfBoundsException();
-        Node<E> linkedList = startNode;
-        int i = 0;
+        Node<E> currentNode = startNode;
+        int currentIndex = 0;
         if (index != size - 1) {
-            while (i < index) {
-                linkedList = linkedList.nextNode;
-                i++;
+            while (currentIndex < size - 2) {
+                if (currentIndex < index) {
+                    currentNode = currentNode.nextNode;
+                } else {
+                    currentNode.value = currentNode.nextNode.value;
+                    currentNode = currentNode.nextNode;
+                }
+                currentIndex++;
             }
-            while (i < size - 2) {
-                // node[i] = node[i + 1]
-                linkedList.value = linkedList.nextNode.value;
-                linkedList = linkedList.nextNode;
-                i++;
-            }
-            linkedList.value = linkedList.nextNode.value;
-            linkedList.nextNode = null;
+            currentNode.value = currentNode.nextNode.value;
+            currentNode.nextNode = null;
         }
         else {
-            while (i < index - 1) {
-                linkedList = linkedList.nextNode;
-                i++;
+            while (currentIndex < index - 1) {
+                currentNode = currentNode.nextNode;
+                currentIndex++;
             }
-            linkedList.nextNode = null;
-            lastNode = linkedList;
+            currentNode.nextNode = null;
+            lastNode = currentNode;
         }
         size--;
     }

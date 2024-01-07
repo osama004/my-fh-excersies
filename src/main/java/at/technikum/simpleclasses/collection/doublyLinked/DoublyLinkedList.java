@@ -1,9 +1,8 @@
 package at.technikum.simpleclasses.collection.doublyLinked;
 
 import at.technikum.simpleclasses.collection.List;
-import at.technikum.simpleclasses.collection.Node;
 
-public class LinkedListDoublyLinked implements List<Integer> {
+public class DoublyLinkedList implements List<Integer> {
 
     private NodeDoubly<Integer> startNode;
 
@@ -56,7 +55,7 @@ public class LinkedListDoublyLinked implements List<Integer> {
         return 0;
     }
 
-    public LinkedListDoublyLinked() {
+    public DoublyLinkedList() {
         this.size = 0;
     }
 }

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"CoronaTest","l":"AntigenTest"},{"p":"CoronaTest","l":"CoronaTest"},{"p":"CoronaTest","l":"Date"},{"p":"CoronaTest","l":"Main"},{"p":"CoronaTest","l":"PcrTest"},{"p":"CoronaTest","l":"Person"}]

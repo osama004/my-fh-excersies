@@ -14,6 +14,7 @@ public class TestMyLinkedList {
 
 
         numbers.removeAt(1);
+        numbers.print();
         numbers.removeAt(3);
 
         numbers.print();
